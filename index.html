@@ -1,0 +1,108 @@
+---
+layout: base
+---
+
+<div class="about">
+  <div class="profile">
+    <img class="selfie" alt="{{ site.author.name }}" src="{{ site.author.selfie }}" />
+    <div class="info">
+      <div class="title">{{ site.author.name }}</div>
+      <div class="description">{{ site.author.desc }}</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2 class="portfolio-section">Bio</h2>
+    <p>I am now a Postdoctoral Researcher at Research Center For Integrated Quantum Electronics, Hokkaido University, hosted by Prof. Masayuki Ikebe. I got my Ph.D. degree from Graduate School of Information Science and Technology, Hokkaido University.</p>
+    <p>My main interests are in <b>Computer Vision</b>, <b>Machine Learning</b>, <b>Medical Image Analysis</b>. Specifically in <b>Tone Mapping</b>, <b>Image Registration</b>, and <b>Image Segmentation</b>.</p>
+    </br>
+
+    <h2 class="portfolio-section">Publications ( <span id="sel" class="on" onclick="sel('sel')">Selected</span> / <span id="unsel" class="off" onclick="sel('unsel')">All by data</span> )</h2>
+    <p class="nomargin">( <sup>*</sup> Equal Contribution and <sup>#</sup> Corresponding Author)</p>
+    <div class="portfolio">
+      {% for post in paginator.posts %}
+      {% if post.selected %}
+        <div class="portfolio-item">
+      {% else %}
+        <div class="portfolio-item unselected nodisplay">
+      {% endif %}
+        <h1 class="portfolio-title">{{ post.title }}
+        {% if post.awards %}
+          {% assign index = 0 %}
+          {% for award in post.awards %}
+            {% if index > 0 %}
+              {% capture text %}{{ text }} & {% endcapture %}
+            {% endif %}
+            {% assign index = index | plus: 1 %}
+            {% if award.link %}
+              {% capture text %}{{ text }}<a href="{{ award.link }}">{{ award.name }}</a>{% endcapture %}
+            {% else %}
+              {% capture text %}{{ text }}{{ award.name }}{% endcapture %}
+            {% endif %}
+          {% endfor %}
+          <span class="award">({{ text }})</span>
+        {% endif %}
+        </h1>
+        <div class="portfolio-content">
+          <span>
+            {% assign len = post.authors.size %}
+            {% assign index = 0 %}
+            {% for author in post.authors %}
+              {% assign index = index | plus: 1 %}
+              {% capture name %}{{ author.name }}{% endcapture %}
+              {% if author.eqCon %}
+                {% capture name %}{{ name }}<sup>*</sup>{% endcapture %}
+              {% endif %}
+              {% if author.Corr %}
+                {% capture name %}{{ name }}<sup>#</sup>{% endcapture %}
+              {% endif %}
+              {% assign key = author.name | split: " " %}
+              {% capture key %}{{ key[1] }}{% endcapture %}
+              {% if key == 'Ou' %}
+                {% capture name %}<span class='portfolio-underline'>{{ name }}</span>{% endcapture %}
+              {% endif %}
+              {% if site.link[key] %}
+                {% capture name %}<a class="withlink" href={{ site.link[key] }} target="_blank">{{ name }}</a>{% endcapture %}
+              {% endif %}
+              {% if index == len %}
+                {% capture name %}{{ name }}.{% endcapture %}
+              {% else %}
+                {% capture name %}{{ name }},{% endcapture %}
+              {% endif %}
+              {{ name }}
+            {% endfor %}
+          </span>
+          </br>
+          {% if post.publisher %}
+            <i>In {{ post.publisher }}</i>,
+          {% endif %}
+          <span>{{ post.date | date: "%B %d, %Y" }}.</span>
+          </br>
+        </div>
+
+        <div class="portfolio-links">
+          {% if post.page %}
+            <a href="{{ post.url | prepend: site.baseurl }}"><button type="button" class="btn btn-outline-dark">Detail</button></a>
+          {% endif %}
+          {% if post.links %}
+            {% for link in post.links %}
+              <a href="{{ link.link }}" target="_blank"><button type="button" class="btn btn-outline-dark">{{ link.name }}</button></a>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        </div>
+
+        </br>
+      {% endfor %}
+    </div>
+
+    <div class="social-layer">
+      <div class="social-icons">
+        <ul>
+          {% include icons.html %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

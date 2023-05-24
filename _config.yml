@@ -1,0 +1,89 @@
+# Site settings
+title: Yafei Ou
+baseurl: ""
+url: "https://yafeiou.github.io"
+google_analytics: # Tracking ID, e.g. "UA-000000-01"
+
+# Author
+author:
+  name: Yafei Ou
+  desc:
+  email: oygrallen@gmail.com
+  selfie: assets/img/1.jpg
+
+# social
+social:
+  email: true
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  github: yafeiou
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:
+  steam:
+  tumblr:
+  gitlab:
+  twitter:
+  vimeo:
+  wordpress:
+  youtube:
+  default_txt: "Follow On"
+  orcid: 0000-0001-7510-0813
+  google-scholar: 2SyrQ1oAAAAJ
+
+email:
+  Ou: oygrallen@gmail.com
+  Ambalathankandy: prasoon.ak@ist.hokudai.ac.jp
+  Ikebe: ikebe@ist.hokudai.ac.jp
+  Kamishima: ktamotamo2@hs.hokudai.ac.jp
+  Wang: haolin.wang.k3@elms.hokudai.ac.jp
+  Takamaeda: shinya@is.s.u-tokyo.ac.jp
+  Motomura: motomura@artic.iir.titech.ac.jp
+  Asai: asai@ist.hokudai.ac.jp
+  Tamura: tamura.kennichi@nihon-u.ac.jp
+
+link:
+  Ambalathankandy: https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html
+  Ikebe: https://researchmap.jp/read0116849
+  Kamishima: https://kamishima.hs-hokudai.jp/e_index.html
+  Takamaeda: https://sites.google.com/site/shinyaty/home
+  Motomura: http://www.artic.iir.titech.ac.jp/wp/en/people/
+  Asai: http://lalsie.ist.hokudai.ac.jp/~asai/en/
+  Tamura: http://www.mech.ce.nihon-u.ac.jp/~tamura/
+
+
+
+# Build settings
+markdown: kramdown
+
+# Assets
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Gems
+plugins:
+  - jekyll-paginate
+
+# Permalinks
+enabled: true
+permalink: /:year-:month-:day/:title
+paginate_path: "page:num/"
+#paginate_path: ['page:num/', 'publications/page:num/']
+paginate: 50
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "*.gem"
+  - "LICENSE"
+  - "READE.md"
+  - "screenshot.png"
+

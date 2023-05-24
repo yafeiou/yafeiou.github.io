@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yafei Ou</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/css/all.css">
+  <link rel="stylesheet" href="/assets/css/academicons.css"/>
+
+  <!-- Google Analytics -->
+  
+
+  <script>
+    function sel(a) {
+      var y = document.getElementsByClassName('unselected');
+      if(a=='sel') {
+        document.getElementById('sel').className = 'on';
+        document.getElementById('unsel').className = 'off';
+        for (i = 0; i < y.length; i++) {
+          y[i].className = 'portfolio-item unselected nodisplay';
+        }
+      }
+      else {
+        document.getElementById('sel').className = 'off';
+        document.getElementById('unsel').className = 'on';
+        for (i = 0; i < y.length; i++) {
+            y[i].className = 'portfolio-item unselected ';
+        }
+      }
+    }
+  </script>
+
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Yafei Ou</h2>
+        </a>
+    </div>
+  </nav>
+    <main>
+      <div class="post">
+  <h2 class="post-title">Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark</h2>
+  <div class="container authors">
+    <div class="row">
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <span class='portfolio-underline'>Yafei Ou</span>
+          
+          </br>
+          <a class="mailto" href="mailto:oygrallen@gmail.com" title="email">oygrallen@gmail.com</a>
+          
+        </div>
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>
+          
+          </br>
+          <a class="mailto" href="mailto:prasoon.ak@ist.hokudai.ac.jp" title="email">prasoon.ak@ist.hokudai.ac.jp</a>
+          
+        </div>
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <a class="withlink" href=https://sites.google.com/site/shinyaty/home target="_blank">Shinya Takamaeda</a>
+          
+          </br>
+          <a class="mailto" href="mailto:shinya@is.s.u-tokyo.ac.jp" title="email">shinya@is.s.u-tokyo.ac.jp</a>
+          
+        </div>
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <a class="withlink" href=http://www.artic.iir.titech.ac.jp/wp/en/people/ target="_blank">Masato Motomura</a>
+          
+          </br>
+          <a class="mailto" href="mailto:motomura@artic.iir.titech.ac.jp" title="email">motomura@artic.iir.titech.ac.jp</a>
+          
+        </div>
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <a class="withlink" href=http://lalsie.ist.hokudai.ac.jp/~asai/en/ target="_blank">Tetsuya Asai</a>
+          
+          </br>
+          <a class="mailto" href="mailto:asai@ist.hokudai.ac.jp" title="email">asai@ist.hokudai.ac.jp</a>
+          
+        </div>
+      
+        <div class="col-4 text-center">
+          
+          
+          
+          
+          
+          
+          
+          <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>
+          
+          </br>
+          <a class="mailto" href="mailto:ikebe@ist.hokudai.ac.jp" title="email">ikebe@ist.hokudai.ac.jp</a>
+          
+        </div>
+      
+    </div>
+    
+    <div class="units">
+      
+        <div>
+          Hokkaido University
+        </div>
+      
+        <div>
+          The University of Tokyo
+        </div>
+      
+        <div>
+          Tokyo Institute of Technology
+        </div>
+      
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="post-content abs">
+  <h3>Abstract</h3>
+  <p class="abs-text">The rising demand for high quality display has ensued active research in high dynamic range (HDR) imaging, which has the potential to replace the standard dynamic range imaging. This is due to HDR’s features like accurate reproducibility of a scene with its entire spectrum of visible lighting and color depth. But this capability comes with expensive capture, display, storage and distribution resource requirements. Also, display of HDR images/video content on an ordinary display device with limited dynamic range requires some form of adaptation. Many adaptation algorithms, widely known as tone mapping (TM) operators, have been studied and proposed in the last few decades. In this article, we present a comprehensive survey of 60 TM algorithms that have been implemented on hardware for acceleration and real-time performance. In this state-of-the-art survey, we will discuss those TM algorithms which have been implemented on GPU, FPGA, and ASIC in terms of their hardware specifications and performance. Output image quality is an important metric for TM algorithms. From our literature survey we found that, various objective quality metrics have been used to demonstrate the quality of those algorithms hardware implementation. We have compiled those metrics used in this survey, and analyzed the relationship between hardware cost, image quality and computational efficiency. Currently, machine learning-based (ML) algorithms have become an important tool to solve many image processing tasks, and this article concludes with a discussion on the future research directions to realize ML-based TM operators on hardware.</p>
+  
+  <h4>Key words</h4>
+  <p>Tone mapping, computational complexity, survey, high dynamic range, image sensor, ASIC, FPGA, GPU.</p>
+  
+  
+  <h4>Appeared in: </h4> <p><i>IEEE Transactions on Circuits and Systems for Video Technology</i>,
+  <span>February 18, 2021.</span>
+  
+  </p>
+  
+</div>
+
+
+<div class="post-content download">
+  <h3>Download</h3>
+    
+      
+        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9356757" target="_blank"><button type="button" class="btn btn-outline-dark">PDF</button></a>
+      
+        <a href="https://arxiv.org/abs/2003.03074" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
+      
+    
+</div>
+
+
+<div class="post-content result">
+  <h3>Result</h3>
+  <img src="../assets/img/2022TCSVT.jpg" />
+  <p class="caption">Figure. This figure illustrates HVS and camera processing of HDR scenes. HVS through its non-linear and continuous adaptation can adjust across a very broad luminance range. Whereas a camera requires multiple exposure images (or HDR image sensor) to capture the wide ambient luminance levels that exists in the scenery. The HDR images produced from these multi-exposure images have higher bit width and a TM operator is required to faithfully display it on a common display device. Global TM functions are good for capturing overall preview of the input image. Local TM function by considering pixel neighborhood information for each input pixel, can emphasize more local details. Additional filters are used to improve the subjective quality of TM images.</p>
+  <div class="text">
+    
+      <p>In this survey we report a comprehensive list of about 60 tone mapping algorithms that have been implemented on hardware platforms like ASIC, FPGA and GPUs to accelerate the data intensive algorithms for real-time performance. Design and implementation of such algorithms are usually complicated, as hardware porting of their software equivalent may need to be redesigned for efficient hardware implementations. This effort leads to various design challenges that are encountered during the hardware development. Usually the software algorithms are realized with floating-point data type and fixed-point conversion of the algorithms lead to loss of accuracy (image quality). Also, authors prefer to design their own optimized tone mapping functions over others in order to avoid system redesign. In our literature survey we found that, various objective quality metrics have been used to demonstrate this distortion. For easy reference we have summarized all these objective metrics used in this survey. Finally, in this paper we also demonstrate the link between hardware cost and image quality thereby, illustrating the underlying trade-off. From our results we can observe that from early days FPGAs have been preferred platform for realizing real-time tone mapping applications. Features like rapid-prototyping and good support with developmental tools have made FPGAs a popular hardware platform. Another attractive feature of FPGA proven design is that it can be ported to structured ASICs which are available from many vendors, there by giving developers a faster route to market their products.</p>
+    
+  </div>
+</div>
+
+
+
+<div class="post-content ref">
+  <h3>Reference</h3>
+  <h4>Citation</h4>
+  <p>Y. Ou, P. Ambalathankandy, S. Takamaeda, M. Motomura, T. Asai and M. Ikebe, Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark, in <i>IEEE Transactions on Circuits and Systems for Video Technology</i>, vol. 32, no. 5, pp. 2666-2686, May 2022, doi: 10.1109/TCSVT.2021.3060143.</p>
+  
+    <h4>BibTeX</h4>
+    <pre>@article{ou2021real,</br> author={Ou, Yafei and Ambalathankandy, Prasoon and Takamaeda, Shinya and Motomura, Masato and Asai, Tetsuya and Ikebe, Masayuki},</br> journal={IEEE Transactions on Circuits and Systems for Video Technology},</br> title={Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark},</br> year={2022},</br> volume={32},</br> number={5},</br> pages={2666-2686},</br> doi={10.1109/TCSVT.2021.3060143}</br>}</pre>
+  
+</div>
+
+
+
+<div class="post-content ack">
+  <h3>Acknowledgments</h3>
+  <p>This work was supported in part by the Japan Society for the Promotion of Science (JSPS) Grants-in-Aid for Scientific Research (KAKENHI) under Grant JP18H05288 and Grant JP18H0321309 and in part by JSPS Fellows under Grant 19J14105.</p>
+</div>
+
+
+
+
+
+<!--<div class="post-content">-->
+  <!--
+-->
+<!--</div>-->
+
+<div class="pagination">
+  
+    <a href="/2022-10-27/JBHI" class="left next">Prev</a>
+  
+  
+    <a href="/2019-04-08/ISBI" class="right next">Next</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2023-05-24 16:39:37 +0900">2023</time> Yafei Ou.
+      </span>
+    </footer>
+  </body>
+</html>
