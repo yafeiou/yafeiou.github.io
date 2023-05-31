@@ -86,8 +86,14 @@ layout: base
 {% if page.result %}
 <div class="post-content result">
   <h3>Result</h3>
-  <img src="{{ page.result.image }}" />
-  <p class="caption">Figure. {{ page.result.caption }}</p>
+  {% if page.result.image %}
+    {% assign index = 1 %}
+    {% for img in page.result.image %}
+      <img src="{{ img.link }}" />
+      <p class="caption">Figure {{ index }}. {{ img.caption }}</p>
+      {% assign index = index | plus: 1 %}
+    {% endfor %}
+  {% endif %}
   <div class="text">
     {% for paragraph in page.result.text %}
       <p>{{ paragraph }}</p>
