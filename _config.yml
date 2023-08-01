@@ -59,6 +59,28 @@ link:
   Asai: http://lalsie.ist.hokudai.ac.jp/~asai/en/
   Tamura: http://www.mech.ce.nihon-u.ac.jp/~tamura/
 
+awards:
+  - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
+    organizer: IEEE Sapporo Young Professionals
+    time: July 2023
+    link: https://r10.ieee.org/sapporo-yp/2023/07/31/2023-ieee-sapporo-yp-awards%e3%81%ae%e9%81%b8%e8%80%83%e7%b5%90%e6%9e%9c%e3%81%ae%e7%99%ba%e8%a1%a8/
+  - name: Featured Article (Top 7%)
+    organizer: IEEE Journal of Biomedical and Health Informatics
+    time: January 2023
+    link: https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/
+  - name: Cover Article of Special Issue (1/12)
+    organizer: IEEE Journal of Biomedical and Health Informatics
+    time: January 2023
+    link: https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/
+  - name: Bronze Award
+    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
+    time: April 2020
+  - name: Excellent Student Award
+    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
+    time: April 2020
+  - name: Meritorious Winner (No. 50124) (Top 7%)
+    organizer: Mathematical Contest in Modeling (MCM)
+    time: April 2016
 
 
 # Build settings

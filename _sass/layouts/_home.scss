@@ -37,5 +37,13 @@
 }
 
 .award-text {
-  font-size: 0.95em;
+  //font-size: 0.95em;
+  line-height: 24px;
+  margin: 6px 0;
+  a {
+    color: #353535;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
 }

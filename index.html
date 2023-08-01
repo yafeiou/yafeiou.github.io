@@ -31,7 +31,7 @@ layout: base
           {% assign index = 0 %}
           {% for award in post.awards %}
             {% if index > 0 %}
-              {% capture text %}{{ text }} & {% endcapture %}
+              {% capture text %}{{ text }}) ({% endcapture %}
             {% endif %}
             {% assign index = index | plus: 1 %}
             {% if award.link %}
@@ -96,11 +96,11 @@ layout: base
     </div>
     </br>
     <h2 class="portfolio-section">Award</h2>
-      <p class="award-text">
-        Bronze Award, The 76th Annual Meeting of the Japanese Society of Radiological Technology, April 2020. </br>
-        Excellent Student Award, The 76th Annual Meeting of the Japanese Society of Radiological Technology, April 2020. </br>
-        Meritorious Winner (No. 50124) (Top 7%), Mathematical Contest in Modeling (MCM), April 2016. </br>
-      </p>
+      {% for award in site.awards %}
+        <p class="award-text">
+          {% if award.link %}<a href="{{ award.link }}">{{ award.name }}</a>{% else %}{{ award.name }}{% endif %}{% if award.organizer %}, {{ award.organizer }}{% endif %}{% if award.time %}, {{ award.time }}{% endif %}.
+        </p>
+      {% endfor %}
     <div class="social-layer">
       <div class="social-icons">
         <ul>
