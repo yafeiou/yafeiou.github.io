@@ -3,7 +3,7 @@ layout: base
 ---
 
 <div class="post">
-  <h2 class="post-title">{{ page.title }}</h2>
+  <h2 class="post-title">{{ page.paperTitle }}</h2>
   <div class="container authors">
     <div class="row">
       {% for author in page.authors %}
@@ -35,7 +35,7 @@ layout: base
     <div class="units">
       {% for unit in page.units %}
         <div>
-          {{ unit.name }}
+          {{ site.units[unit.name].name }}
         </div>
       {% endfor %}
     </div>
@@ -43,22 +43,25 @@ layout: base
   </div>
 </div>
 
-{% if page.abstract %}
+
 <div class="post-content abs">
+  {% if page.contents.abstract %}
   <h3>Abstract</h3>
-  <p class="abs-text">{{ page.abstract }}</p>
-  {% if page.abstract %}
+  <p class="abs-text">{{ page.contents.abstract }}</p>
+  {% if page.contents.keyword %}
   <h4>Key words</h4>
-  <p>{{ page.keyword }}</p>
+  <p>{{ page.contents.keyword }}</p>
   {% endif %}
-  {% if page.publisher %}
-  <h4>Appeared in: </h4> <p><i>{{ page.publisher }}</i>,
+  {% endif %}
+
+  {% if site.journal[page.title].name %}
+  <h4>Appeared in: </h4> <p><i>{{ site.journal[page.title].name }}</i>{% if site.journal[page.title].IF %} (IF: {{ site.journal[page.title].IF }}){% endif %},
   <span>{{ page.date | date: "%B %d, %Y" }}.</span>
   {% if page.awards %}
     {% assign index = 0 %}
     {% for award in page.awards %}
       {% if index > 0 %}
-        {% capture text %}{{ text }} & {% endcapture %}
+        {% capture text %}{{ text }}) ({% endcapture %}
       {% endif %}
       {% assign index = index | plus: 1 %}
       {% if award.link %}
@@ -72,7 +75,6 @@ layout: base
   </p>
   {% endif %}
 </div>
-{% endif %}
 
 <div class="post-content download">
   <h3>Download</h3>
@@ -83,41 +85,41 @@ layout: base
     {% endif %}
 </div>
 
-{% if page.result %}
+{% if page.contents.result %}
 <div class="post-content result">
   <h3>Result</h3>
-  {% if page.result.image %}
+  {% if page.contents.result.image %}
     {% assign index = 1 %}
-    {% for img in page.result.image %}
+    {% for img in page.contents.result.image %}
       <img src="{{ img.link }}" />
       <p class="caption">Figure {{ index }}. {{ img.caption }}</p>
       {% assign index = index | plus: 1 %}
     {% endfor %}
   {% endif %}
   <div class="text">
-    {% for paragraph in page.result.text %}
+    {% for paragraph in page.contents.result.text %}
       <p>{{ paragraph }}</p>
     {% endfor %}
   </div>
 </div>
 {% endif %}
 
-{% if page.citation %}
+{% if page.contents.citation %}
 <div class="post-content ref">
   <h3>Reference</h3>
   <h4>Citation</h4>
-  <p>{{ page.citation }}</p>
-  {% if page.bib %}
+  <p>{{ page.contents.citation }}</p>
+  {% if page.contents.bib %}
     <h4>BibTeX</h4>
-    <pre>{{ page.bib }}</pre>
+    <pre>{{ page.contents.bib }}</pre>
   {% endif %}
 </div>
 {% endif %}
 
-{% if page.ack %}
+{% if page.contents.ack %}
 <div class="post-content ack">
   <h3>Acknowledgments</h3>
-  <p>{{ page.ack }}</p>
+  <p>{{ page.contents.ack }}</p>
 </div>
 {% endif %}
 

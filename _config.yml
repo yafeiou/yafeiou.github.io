@@ -59,6 +59,47 @@ link:
   Asai: http://lalsie.ist.hokudai.ac.jp/~asai/en/
   Tamura: http://www.mech.ce.nihon-u.ac.jp/~tamura/
 
+units:
+  HU:
+    name: Hokkaido University
+  Todai:
+    name: The University of Tokyo
+  TIT:
+    name: Tokyo Institute of Technology
+  Nihon:
+    name: Nihon University
+
+journal:
+  Tcsvt:
+    name: IEEE Transactions on Circuits and Systems for Video Technology
+    IF: 8.4
+  Jbhi:
+    name: IEEE Journal of Biomedical and Health Informatics
+    IF: 7.7
+  Cmig:
+    name: Computerized Medical Imaging and Graphics
+    IF: 5.7
+  Isbi:
+    name: IEEE International Symposium on Biomedical Imaging
+  Jno:
+    name: Journal of neuro-oncology
+  Dicta:
+    name: 2019 Digital Image Computing Techniques and Applications (DICTA)
+  Jdi:
+    name: Journal of Digital Imaging
+  Jei:
+    name: Journal of electronic imaging
+  Mta:
+    name: ITE Transactions on Media Technology and Applications
+  Ard:
+    name: Annals of the Rheumatic Diseases
+  Bmeicon:
+    name: Biomedical Engineering International Conference (BMEiCON)
+  Jjr:
+    name: Japanese Journal of Radiology
+
+
+
 awards:
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
     organizer: IEEE Sapporo Young Professionals

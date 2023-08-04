@@ -26,7 +26,7 @@ layout: base
       {% else %}
         <div class="portfolio-item unselected nodisplay">
       {% endif %}
-        <h1 class="portfolio-title">{{ post.title }}
+        <h1 class="portfolio-title">{{ post.paperTitle }}
         {% if post.awards %}
           {% assign index = 0 %}
           {% for award in post.awards %}
@@ -73,8 +73,8 @@ layout: base
             {% endfor %}
           </span>
           </br>
-          {% if post.publisher %}
-            <i>In {{ post.publisher }}</i>,
+          {% if site.journal[post.title].name %}
+            In <i>{{ site.journal[post.title].name }}</i>{% if site.journal[post.title].IF %} (IF: {{ site.journal[post.title].IF }}){% endif %},
           {% endif %}
           <span>{{ post.date | date: "%B %d, %Y" }}.</span>
           </br>
