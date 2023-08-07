@@ -1,7 +1,6 @@
 .social-layer {
   display: inline-block;
   text-align: center;
-  width: 100%;
   color: lighten(gray, 30%);
   font-size: 0.9em;
 
@@ -10,6 +9,7 @@
      list-style: none;
       li {
         display: inline;
+        padding-right: 6px;
       }
     }
   }

@@ -95,18 +95,13 @@ layout: base
       {% endfor %}
     </div>
     </br>
-    <h2 class="portfolio-section">Award</h2>
-      {% for award in site.awards %}
-        <p class="award-text">
-          {% if award.link %}<a href="{{ award.link }}">{{ award.name }}</a>{% else %}{{ award.name }}{% endif %}{% if award.organizer %}, {{ award.organizer }}{% endif %}{% if award.time %}, {{ award.time }}{% endif %}.
-        </p>
-      {% endfor %}
-    <div class="social-layer">
-      <div class="social-icons">
-        <ul>
-          {% include icons.html %}
-        </ul>
-      </div>
+    <div class="post-content">
+      <h2 class="portfolio-section">Award</h2>
+        {% for award in site.awards %}
+          <p class="award-text">
+            {% if award.link %}<a href="{{ award.link }}">{{ award.name }}</a>{% else %}{{ award.name }}{% endif %}{% if award.organizer %}, {{ award.organizer }}{% endif %}{% if award.time %}, {{ award.time }}{% endif %}.
+          </p>
+        {% endfor %}
     </div>
   </div>
 </div>
