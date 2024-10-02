@@ -8,33 +8,15 @@ google_analytics: # Tracking ID, e.g. "UA-000000-01"
 author:
   name: Yafei Ou
   desc:
-  email: oygrallen@gmail.com
+  email: ou.y.ac@m.titech.ac.jp
   selfie: assets/img/1.jpg
 
 # social
 social:
   email: true
-  behance:
-  bitbucket:
-  dribbble:
-  facebook:
-  flickr:
   github: yafeiou
   google_plus:
-  instagram:
-  keybase:
   linkedin:
-  pinterest:
-  reddit:
-  soundcloud:
-  stack_exchange:
-  steam:
-  tumblr:
-  gitlab:
-  twitter:
-  vimeo:
-  wordpress:
-  youtube:
   default_txt: "Follow On"
   orcid: 0000-0001-7510-0813
   google-scholar: 2SyrQ1oAAAAJ
@@ -48,7 +30,6 @@ email:
   Takamaeda: shinya@is.s.u-tokyo.ac.jp
   Motomura: motomura@artic.iir.titech.ac.jp
   Asai: asai@ist.hokudai.ac.jp
-  Tamura: tamura.kennichi@nihon-u.ac.jp
 
 link:
   Ambalathankandy: https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html
@@ -57,7 +38,8 @@ link:
   Takamaeda: https://sites.google.com/site/shinyaty/home
   Motomura: http://www.artic.iir.titech.ac.jp/wp/en/people/
   Asai: http://lalsie.ist.hokudai.ac.jp/~asai/en/
-  Tamura: http://www.mech.ce.nihon-u.ac.jp/~tamura/
+  Suzuki: https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/
+  Gong: https://faculty.swjtu.edu.cn/gongxun
 
 units:
   HU:
@@ -68,37 +50,33 @@ units:
     name: Tokyo Institute of Technology
   Nihon:
     name: Nihon University
+  Keio:
+    name: Keio University
+  NCC:
+    name: National Cancer Center
+  SWJTU:
+    name: Southwest Jiaotong University
 
 journal:
   Tcsvt:
     name: IEEE Transactions on Circuits and Systems for Video Technology
-    IF: 8.4
+    IF: 8.3
   Jbhi:
     name: IEEE Journal of Biomedical and Health Informatics
-    IF: 7.7
+    IF: 6.7
   Cmig:
     name: Computerized Medical Imaging and Graphics
-    IF: 5.7
+    IF: 5.4
   Isbi:
-    name: IEEE International Symposium on Biomedical Imaging
-  Jno:
-    name: Journal of neuro-oncology
-  Dicta:
-    name: 2019 Digital Image Computing Techniques and Applications (DICTA)
-  Jdi:
-    name: Journal of Digital Imaging
-  Jei:
-    name: Journal of electronic imaging
-  Mta:
-    name: ITE Transactions on Media Technology and Applications
-  Ard:
-    name: Annals of the Rheumatic Diseases
+    name: IEEE International Symposium on Biomedical Imaging (ISBI)
+  24miccai:
+    name: the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)
+    rate: 30%
+  24bibm:
+    name: 2024 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2024)
+    rate: 22%
   Bmeicon:
     name: Biomedical Engineering International Conference (BMEiCON)
-  Jjr:
-    name: Japanese Journal of Radiology
-
-
 
 awards:
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
@@ -113,15 +91,15 @@ awards:
     organizer: IEEE Journal of Biomedical and Health Informatics
     time: January 2023
     link: https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/
-  - name: Bronze Award
-    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
-    time: April 2020
-  - name: Excellent Student Award
-    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
-    time: April 2020
-  - name: Meritorious Winner (No. 50124) (Top 7%)
-    organizer: Mathematical Contest in Modeling (MCM)
-    time: April 2016
+#  - name: Bronze Award
+#    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
+#    time: April 2020
+#  - name: Excellent Student Award
+#    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
+#    time: April 2020
+#  - name: Meritorious Winner (No. 50124) (Top 7%)
+#    organizer: Mathematical Contest in Modeling (MCM)
+#    time: April 2016
 
 
 # Build settings
@@ -143,8 +121,8 @@ exclude:
   - "Gemfile.lock"
   - "*.gem"
   - "LICENSE"
-  - "READE.md"
-  - "screenshot.png"
+  - "README.md"
+future: true
 
 remote_theme: chesterhow/tale
 

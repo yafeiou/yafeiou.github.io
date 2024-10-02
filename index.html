@@ -17,18 +17,17 @@ layout: base
     <p>My main interests are in <b>Computer Vision</b>, <b>Machine Learning</b>, <b>Medical Image Analysis</b>. Specifically in <b>Tone Mapping</b>, <b>Image Registration</b>, and <b>Image Segmentation</b>.</p>
     </br>
 
-    <h2 class="portfolio-section">Publications ( <span id="sel" class="on" onclick="sel('sel')">Selected</span> / <span id="unsel" class="off" onclick="sel('unsel')">All</span> )</h2>
+    <!--<h2 class="portfolio-section">Publications ( <span id="sel" class="on" onclick="sel('sel')">Selected</span> / <span id="unsel" class="off" onclick="sel('unsel')">All</span> )</h2>-->
+    <h2 class="portfolio-section">Selected Publications</h2>
     <p class="nomargin">( <sup>*</sup> Equal Contribution and <sup>#</sup> Corresponding Author)</p>
     <div class="portfolio">
       {% for post in paginator.posts %}
       {% if post.selected %}
         <div class="portfolio-item">
-      {% else %}
-        <div class="portfolio-item unselected nodisplay">
-      {% endif %}
         <h1 class="portfolio-title">{{ post.paperTitle }}
         {% if post.awards %}
           {% assign index = 0 %}
+          {% assign text = '' %}
           {% for award in post.awards %}
             {% if index > 0 %}
               {% capture text %}{{ text }}) ({% endcapture %}
@@ -74,12 +73,11 @@ layout: base
           </span>
           </br>
           {% if site.journal[post.title].name %}
-            In <i>{{ site.journal[post.title].name }}</i>{% if site.journal[post.title].IF %} (IF: {{ site.journal[post.title].IF }}){% endif %},
+            In <i>{{ site.journal[post.title].name }}</i>{% if site.journal[post.title].rate %} (acceptance rate: {{ site.journal[post.title].rate }}){% endif %}{% if site.journal[post.title].IF %} (IF: {{ site.journal[post.title].IF }}){% endif %},
           {% endif %}
           <span>{{ post.date | date: "%B %d, %Y" }}.</span>
           </br>
         </div>
-
         <div class="portfolio-links">
           {% if post.page %}
             <a href="{{ post.url | prepend: site.baseurl }}"><button type="button" class="btn btn-outline-dark">Detail</button></a>
@@ -92,6 +90,8 @@ layout: base
         </div>
 
         </div>
+      {% endif %}
+
       {% endfor %}
     </div>
     </br>
