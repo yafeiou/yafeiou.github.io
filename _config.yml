@@ -71,7 +71,7 @@ journal:
     name: IEEE International Symposium on Biomedical Imaging (ISBI)
   24miccai:
     name: the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)
-    rate: 30%
+    rate: 31%
   24bibm:
     name: 2024 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2024)
     rate: 22%
