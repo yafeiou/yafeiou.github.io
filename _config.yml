@@ -75,6 +75,9 @@ journal:
   24bibm:
     name: 2024 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2024)
     rate: 22%
+  25aaai:
+    name: The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025)
+    rate: 23.4%
   Bmeicon:
     name: Biomedical Engineering International Conference (BMEiCON)
 
