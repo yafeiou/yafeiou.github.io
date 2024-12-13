@@ -89,3 +89,14 @@ td {
 .portfolio-title .award{
   font-size: 0.8em;
 }
+
+.bio {
+  a {
+    color: #333;
+    line-height: 0;
+    font-weight: 500;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
