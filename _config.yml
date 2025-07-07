@@ -60,17 +60,20 @@ units:
 journal:
   Tcsvt:
     name: IEEE Transactions on Circuits and Systems for Video Technology
-    IF: 8.3
+    IF: 11.1
+  Pr:
+    name: Pattern Recognition
+    IF: 7.6
   Jbhi:
     name: IEEE Journal of Biomedical and Health Informatics
-    IF: 6.7
+    IF: 6.8
   Cmig:
     name: Computerized Medical Imaging and Graphics
-    IF: 5.4
+    IF: 4.9
   Isbi:
     name: IEEE International Symposium on Biomedical Imaging (ISBI)
   24miccai:
-    name: the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)
+    name: The 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)
     rate: 31%
   24bibm:
     name: 2024 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2024)
@@ -78,8 +81,12 @@ journal:
   25aaai:
     name: The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025)
     rate: 23.4%
-  Bmeicon:
-    name: Biomedical Engineering International Conference (BMEiCON)
+  25miccai:
+    name: The 28th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2025)
+    rate: 30%
+  25acmmm:
+    name: The 33rd ACM International Conference on Multimedia (ACM MM)
+    rate: 23.7%
 
 awards:
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
