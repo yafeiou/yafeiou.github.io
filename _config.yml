@@ -23,13 +23,13 @@ social:
 
 email:
   Ou: ou.y.ac@m.titech.ac.jp
-  Ambalathankandy: prasoon.ak@ist.hokudai.ac.jp
-  Ikebe: ikebe@ist.hokudai.ac.jp
-  Kamishima: ktamotamo2@hs.hokudai.ac.jp
-  Wang: haolin.wang.k3@elms.hokudai.ac.jp
-  Takamaeda: shinya@is.s.u-tokyo.ac.jp
-  Motomura: motomura@artic.iir.titech.ac.jp
-  Asai: asai@ist.hokudai.ac.jp
+#  Ambalathankandy: prasoon.ak@ist.hokudai.ac.jp
+#  Ikebe: ikebe@ist.hokudai.ac.jp
+#  Kamishima: ktamotamo2@hs.hokudai.ac.jp
+#  Wang: haolin.wang.k3@elms.hokudai.ac.jp
+#  Takamaeda: shinya@is.s.u-tokyo.ac.jp
+#  Motomura: motomura@artic.iir.titech.ac.jp
+#  Asai: asai@ist.hokudai.ac.jp
 
 link:
   Ambalathankandy: https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html
@@ -40,6 +40,7 @@ link:
   Asai: http://lalsie.ist.hokudai.ac.jp/~asai/en/
   Suzuki: https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/
   Gong: https://faculty.swjtu.edu.cn/gongxun
+  Okutomi: http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html
 
 units:
   HU:
@@ -60,33 +61,43 @@ units:
 journal:
   Tcsvt:
     name: IEEE Transactions on Circuits and Systems for Video Technology
+    type: Journal
     IF: 11.1
   Pr:
     name: Pattern Recognition
+    type: Journal
     IF: 7.6
   Jbhi:
     name: IEEE Journal of Biomedical and Health Informatics
+    type: Journal
     IF: 6.8
   Cmig:
     name: Computerized Medical Imaging and Graphics
+    type: Journal
     IF: 4.9
-  Isbi:
-    name: IEEE International Symposium on Biomedical Imaging (ISBI)
-  24miccai:
-    name: The 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)
-    rate: 31%
-  24bibm:
-    name: 2024 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2024)
-    rate: 22%
-  25aaai:
-    name: The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025)
-    rate: 23.4%
-  25miccai:
-    name: The 28th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2025)
-    rate: 30%
-  25acmmm:
-    name: The 33rd ACM International Conference on Multimedia (ACM MM)
-    rate: 23.7%
+  Miccai:
+    name: International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)
+    type: Conference
+    rate:
+      "2024": 31%
+      "2025": 30%
+  Bibm:
+    name: IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)
+    type: Conference
+    rate:
+      "2024": 22%
+  Aaai:
+    name: Annual AAAI Conference on Artificial Intelligence (AAAI)
+    type: Conference
+    rate:
+      "2025": 23.4%
+  Acmmm:
+    name: ACM International Conference on Multimedia (ACM MM)
+    type: Conference
+    rate:
+      "2025": 23.7%
+  Dataset:
+    type: Dataset
 
 awards:
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
