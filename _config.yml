@@ -98,6 +98,11 @@ journal:
       "2025": 23.7%
   Dataset:
     type: Dataset
+  Nips:
+    name: Annual Conference on Neural Information Processing Systems (NeurIPS)
+    type: Conference
+    rate:
+      "2025": 24.91%
 
 awards:
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
