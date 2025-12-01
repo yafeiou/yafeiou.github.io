@@ -13,9 +13,9 @@ layout: base
 
   <div class="content">
     <h2 class="portfolio-section">Bio</h2>
-    <p class="bio">I am now a Researcher Institute of Innovative Research, Tokyo Institute of Technology. I got my Ph.D. degree from Graduate School of Information Science and Technology, Hokkaido University in March 2023, supervised by
+    <p class="bio">I am now a Researcher at Hokkaido University. I got my Ph.D. degree from Graduate School of Information Science and Technology, Hokkaido University in March 2023, supervised by
       <a href="https://ieeexplore.ieee.org/author/37267174600">Prof. Masayuki Ikebe</a>.</p>
-    <p>My main interests are in Medical Image Analysis, Multi-modal, Explainable AI, and Computer Vision.</p>
+    <p>My main interests are in Computer-aided Diagnosis, Multi-modal, Explainable AI, and Computer Vision.</p>
     <p>
       <b>We are seeking collaborations in rheumatoid arthritis</b> <a href="/RAM10K" class="important">[link]</a>.
     </p>
@@ -88,6 +88,8 @@ layout: base
             In <i>{{ site.journal[post.title].name }}</i>,
           {% elsif site.journal[post.title].type == 'Dataset' %}
             <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
+            {% assign year = post.date | date: "%Y" %}
+            In <i>{{ site.journal[post.title].name }}</i> (acceptance rate: {{ site.journal[post.title].rate[year] }}),
           {% endif %}
           <span>{{ post.date | date: "%B %d, %Y" }}.</span>
           </br>

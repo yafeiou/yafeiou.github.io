@@ -96,11 +96,9 @@ journal:
     type: Conference
     rate:
       "2025": 23.7%
-  Dataset:
-    type: Dataset
-  Nips:
+  Nipsdb:
     name: Annual Conference on Neural Information Processing Systems (NeurIPS)
-    type: Conference
+    type: Dataset
     rate:
       "2025": 24.91%
 
