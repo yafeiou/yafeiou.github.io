@@ -1,0 +1,85 @@
+<div class="portfolio-item">
+  <h1 class="portfolio-title">{{ include.post.paperTitle }}
+  {% if include.post.awards %}
+    {% assign index = 0 %}
+    {% assign text = '' %}
+    {% for award in include.post.awards %}
+      {% if index > 0 %}
+        {% capture text %}{{ text }}) ({% endcapture %}
+      {% endif %}
+      {% assign index = index | plus: 1 %}
+      {% if award.link %}
+        {% capture text %}{{ text }}<a href="{{ award.link }}">{{ award.name }}</a>{% endcapture %}
+      {% else %}
+        {% capture text %}{{ text }}{{ award.name }}{% endcapture %}
+      {% endif %}
+    {% endfor %}
+    <span class="award">({{ text }})</span>
+  {% endif %}
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      {% assign len = include.post.authors.size %}
+      {% assign index = 0 %}
+      {% for author in include.post.authors %}
+        {% assign index = index | plus: 1 %}
+        {% capture name %}{{ author.name }}{% endcapture %}
+        {% if author.eqCon %}
+          {% capture name %}{{ name }}<sup>*</sup>{% endcapture %}
+        {% endif %}
+        {% if author.Corr %}
+          {% capture name %}{{ name }}<sup>#</sup>{% endcapture %}
+        {% endif %}
+        {% assign key = author.name | split: " " %}
+        {% capture key %}{{ key[1] }}{% endcapture %}
+        {% if key == 'Ou' %}
+          {% capture name %}<span class='portfolio-underline'>{{ name }}</span>{% endcapture %}
+        {% endif %}
+        {% if site.link[key] %}
+          {% capture name %}<a class="withlink" href={{ site.link[key] }} target="_blank">{{ name }}</a>{% endcapture %}
+        {% endif %}
+        {% if index == len %}
+          {% capture name %}{{ name }}.{% endcapture %}
+        {% else %}
+          {% capture name %}{{ name }},{% endcapture %}
+        {% endif %}
+        {{ name }}
+      {% endfor %}
+    </span>
+    </br>
+
+    {% if site.journal[include.post.title].type == 'Journal' %}
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].IF %} (IF: {{ site.journal[include.post.title].IF }}){% endif %},
+    {% elsif site.journal[include.post.title].type == 'Conference' %}
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      {% assign year = include.post.date | date: "%Y" %}
+      In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].rate[year] %} (acceptance rate: {{ site.journal[include.post.title].rate[year] }}){% endif %},
+    {% elsif site.journal[include.post.title].type == 'Chapter' %}
+      <button type="button" class="btn btn-sm btn-success" disabled>Chapter</button>
+      In <i>{{ site.journal[include.post.title].name }}</i>,
+    {% elsif site.journal[include.post.title].type == 'Dataset' %}
+      <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
+      {% assign year = include.post.date | date: "%Y" %}
+      In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].rate[year] %} (acceptance rate: {{ site.journal[include.post.title].rate[year] }}){% endif %},
+    {% endif %}
+    <span>{{ include.post.date | date: "%B %d, %Y" }}.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    {% if include.post.page %}
+      <a href="{{ include.post.url | prepend: site.baseurl }}">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    {% endif %}
+    {% if include.post.links %}
+      {% for link in include.post.links %}
+        <a href="{{ link.link }}" target="_blank">
+          <button type="button" class="btn btn-outline-dark">{{ link.name }}</button>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

@@ -22,24 +22,52 @@
   
 
   <script>
-    function sel(a) {
-      var y = document.getElementsByClassName('unselected');
-      if(a=='sel') {
-        document.getElementById('sel').className = 'on';
-        document.getElementById('unsel').className = 'off';
-        for (i = 0; i < y.length; i++) {
-          y[i].className = 'portfolio-item unselected nodisplay';
-        }
-      }
-      else {
-        document.getElementById('sel').className = 'off';
-        document.getElementById('unsel').className = 'on';
-        for (i = 0; i < y.length; i++) {
-            y[i].className = 'portfolio-item unselected ';
-        }
-      }
-    }
-  </script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var featuredView = document.getElementById('portfolio-featured');
+      var topicView    = document.getElementById('portfolio-by-topic');
+
+      document.querySelectorAll('.portfolio-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var view = this.getAttribute('data-view');
+
+          document.querySelectorAll('.portfolio-tab').forEach(function (t) {
+            t.classList.remove('active');
+          });
+          this.classList.add('active');
+
+          if (view === 'featured') {
+            if (featuredView) featuredView.style.display = '';
+            if (topicView)    topicView.style.display    = 'none';
+          } else if (view === 'topic') {
+            if (featuredView) featuredView.style.display = 'none';
+            if (topicView)    topicView.style.display    = '';
+          }
+        });
+      });
+
+    document.querySelectorAll('.topic-more-link').forEach(function (el) {
+        el.addEventListener('click', function () {
+          // 找到所属的 topic-block
+          var block = this.closest('.topic-block');
+          if (!block) return;
+
+          var moreDiv = block.querySelector('.topic-more');
+          if (!moreDiv) return;
+
+          var isHidden = (moreDiv.style.display === 'none' || moreDiv.style.display === '');
+          if (isHidden) {
+            moreDiv.style.display = 'block';
+            this.textContent = 'Less';
+          } else {
+            moreDiv.style.display = 'none';
+            this.textContent = 'More';
+          }
+        });
+      });
+    });
+    </script>
+
+
 
 </head>
 
@@ -303,7 +331,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2025-10-29 21:07:43 +0900">2025</time> Yafei Ou.
+        &copy; <time datetime="2025-12-02 15:52:21 +0900">2025</time> Yafei Ou.
       </span>
     </footer>
   </body>

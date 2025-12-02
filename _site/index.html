@@ -22,24 +22,52 @@
   
 
   <script>
-    function sel(a) {
-      var y = document.getElementsByClassName('unselected');
-      if(a=='sel') {
-        document.getElementById('sel').className = 'on';
-        document.getElementById('unsel').className = 'off';
-        for (i = 0; i < y.length; i++) {
-          y[i].className = 'portfolio-item unselected nodisplay';
-        }
-      }
-      else {
-        document.getElementById('sel').className = 'off';
-        document.getElementById('unsel').className = 'on';
-        for (i = 0; i < y.length; i++) {
-            y[i].className = 'portfolio-item unselected ';
-        }
-      }
-    }
-  </script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var featuredView = document.getElementById('portfolio-featured');
+      var topicView    = document.getElementById('portfolio-by-topic');
+
+      document.querySelectorAll('.portfolio-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var view = this.getAttribute('data-view');
+
+          document.querySelectorAll('.portfolio-tab').forEach(function (t) {
+            t.classList.remove('active');
+          });
+          this.classList.add('active');
+
+          if (view === 'featured') {
+            if (featuredView) featuredView.style.display = '';
+            if (topicView)    topicView.style.display    = 'none';
+          } else if (view === 'topic') {
+            if (featuredView) featuredView.style.display = 'none';
+            if (topicView)    topicView.style.display    = '';
+          }
+        });
+      });
+
+    document.querySelectorAll('.topic-more-link').forEach(function (el) {
+        el.addEventListener('click', function () {
+          // 找到所属的 topic-block
+          var block = this.closest('.topic-block');
+          if (!block) return;
+
+          var moreDiv = block.querySelector('.topic-more');
+          if (!moreDiv) return;
+
+          var isHidden = (moreDiv.style.display === 'none' || moreDiv.style.display === '');
+          if (isHidden) {
+            moreDiv.style.display = 'block';
+            this.textContent = 'Less';
+          } else {
+            moreDiv.style.display = 'none';
+            this.textContent = 'More';
+          }
+        });
+      });
+    });
+    </script>
+
+
 
 </head>
 
@@ -166,848 +194,2632 @@
     </p>
     </br>
 
-    <!--<h2 class="portfolio-section">Publications ( <span id="sel" class="on" onclick="sel('sel')">Selected</span> / <span id="unsel" class="off" onclick="sel('unsel')">All</span> )</h2>-->
-    <h2 class="portfolio-section">Featured Publications</h2>
+    <h2 class="portfolio-section">
+      Publications
+      <span class="portfolio-toggle">
+        <span class="portfolio-tab active" data-view="featured">Featured</span>
+        <span class="portfolio-tab" data-view="topic">By topic</span>
+      </span>
+    </h2>
     <p class="nomargin">( <sup>*</sup> Equal Contribution and <sup>#</sup> Corresponding Author)</p>
-    <div class="portfolio">
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">RAM-W600: A Multi-Task Wrist Dataset and Benchmark for Rheumatoid Arthritis
-        
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Songxiao Yang<sup>*</sup>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Haolin Wang<sup>*</sup>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Yao Fu,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Ye Tian,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html target="_blank">Masatoshi Okutomi</a>.
-            
-          </span>
-          </br>
-          
-            <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
-            
-            In <i>Annual Conference on Neural Information Processing Systems (NeurIPS)</i> (acceptance rate: 24.91%),
-          
-          <span>December 02, 2025.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-          
-            
-              <a href="https://arxiv.org/abs/2507.05193" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
-            
-              <a href="https://huggingface.co/datasets/TokyoTechMagicYang/RAM-W600" target="_blank"><button type="button" class="btn btn-outline-dark">Dataset</button></a>
-            
-              <a href="https://github.com/YSongxiao/RAM-W600" target="_blank"><button type="button" class="btn btn-outline-dark">Benchmark</button></a>
-            
-          
-        </div>
 
-        </div>
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">Layer Separation: Towards Adjustable Joint Space Width Images Synthesis
-        
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Haolin Wang,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Gen Ota,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Pengyu Dai,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
-            
-          </span>
-          </br>
-          
-            <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
-            
-            In <i>ACM International Conference on Multimedia (ACM MM)</i> (acceptance rate: 23.7%),
-          
-          <span>October 27, 2025.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-          
-            
-              <a href="https://dl.acm.org/doi/10.1145/3746027.3755407" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://arxiv.org/abs/2502.01972" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
-            
-              <a href="https://github.com/pokeblow/LSN" target="_blank"><button type="button" class="btn btn-outline-dark">Code</button></a>
-            
-          
-        </div>
-
-        </div>
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">GoCa: Trustworthy Multi-Modal RAG with Explicit Thinking Distillation for Reliable Decision-Making in Med-LVLMs
-        
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Pengyu Dai,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Yuqiao Yang,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Ze Jin,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
-            
-          </span>
-          </br>
-          
-            <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
-            
-            In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 30%),
-          
-          <span>September 27, 2025.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-          
-            
-              <a href="https://link.springer.com/chapter/10.1007/978-3-032-05185-1_25" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://github.com/Da1daidaidai/Goca" target="_blank"><button type="button" class="btn btn-outline-dark">Code</button></a>
-            
-          
-        </div>
-
-        </div>
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">BLS-GAN: A Deep Layer Separation Framework for Eliminating Bone Overlap in Conventional Radiographs
-        
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Haolin Wang,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Gen Ota,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Pengyu Dai,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
-            
-          </span>
-          </br>
-          
-            <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
-            
-            In <i>Annual AAAI Conference on Artificial Intelligence (AAAI)</i> (acceptance rate: 23.4%),
-          
-          <span>February 25, 2025.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-          
-            
-              <a href="https://ojs.aaai.org/index.php/AAAI/article/view/32826" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://arxiv.org/abs/2409.07304" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
-            
-              <a href="https://github.com/pokeblow/BLS-GAN.git" target="_blank"><button type="button" class="btn btn-outline-dark">Code</button></a>
-            
-          
-        </div>
-
-        </div>
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">SaSaMIM: Synthetic Anatomical Semantics-Aware Masked Image Modeling for Colon Tumor Segmentation in Non-contrast Abdominal Computed Tomography
-        
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Pengyu Dai,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Yuqiao Yang,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Dichao Liu,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Masahiro Hashimoto,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Masahiro Jinzaki,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Mototaka Miyake,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
-            
-          </span>
-          </br>
-          
-            <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
-            
-            In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 31%),
-          
-          <span>October 06, 2024.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-          
-            
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-72120-5_53" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://github.com/Da1daidaidai/SaSaMIM" target="_blank"><button type="button" class="btn btn-outline-dark">Code</button></a>
-            
-          
-        </div>
-
-        </div>
-      
-
-      
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">A Sub-pixel Accurate Quantification of Joint Space Narrowing Progression in Rheumatoid Arthritis
+    <div id="portfolio-featured" class="portfolio-view">
+      <div class="portfolio">
         
           
-          
-          
-          <span class="award">(<a href="https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/">Featured Article, Top 7% & Cover Article of Special Issue, 1/12</a>) (<a href="https://r10.ieee.org/sapporo-yp/2023/07/31/2023-ieee-sapporo-yp-awards%e3%81%ae%e9%81%b8%e8%80%83%e7%b5%90%e6%9e%9c%e3%81%ae%e7%99%ba%e8%a1%a8/">2023 IEEE Sapporo Young Professionals Best Paper Award</a>)</span>
         
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou</span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Ryunosuke Furuya,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Seiya Kawada,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Tianyu Zeng,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Yujie An,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              Kenichi Tamura,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
-            
-          </span>
-          </br>
           
-            <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
-            In <i>IEEE Journal of Biomedical and Health Informatics</i> (IF: 6.8),
-          
-          <span>October 27, 2022.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-            <a href="/2022-10-27/JBHI"><button type="button" class="btn btn-outline-dark">Detail</button></a>
-          
-          
-            
-              <a href="https://ieeexplore.ieee.org/abstract/document/9931435" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://arxiv.org/abs/2205.09315" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
-            
-          
-        </div>
-
-        </div>
-      
-
-      
-      
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark
         
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            
-            
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <span class='portfolio-underline'>Yafei Ou</span>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://sites.google.com/site/shinyaty/home target="_blank">Shinya Takamaeda</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=http://www.artic.iir.titech.ac.jp/wp/en/people/ target="_blank">Masato Motomura</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=http://lalsie.ist.hokudai.ac.jp/~asai/en/ target="_blank">Tetsuya Asai</a>,
-            
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
-            
-          </span>
-          </br>
           
-            <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
-            In <i>IEEE Transactions on Circuits and Systems for Video Technology</i> (IF: 11.1),
-          
-          <span>February 18, 2021.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          
-            <a href="/2021-02-18/TCSVT"><button type="button" class="btn btn-outline-dark">Detail</button></a>
-          
-          
-            
-              <a href="https://ieeexplore.ieee.org/abstract/document/9356757" target="_blank"><button type="button" class="btn btn-outline-dark">Paper</button></a>
-            
-              <a href="https://arxiv.org/abs/2003.03074" target="_blank"><button type="button" class="btn btn-outline-dark">arXiv</button></a>
-            
-          
-        </div>
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">RAM-W600: A Multi-Task Wrist Dataset and Benchmark for Rheumatoid Arthritis
+  
+    
+    
+    
+    <span class="award">(NeurIPS 2025 Scholar Award)</span>
+  
+  </h1>
 
-        </div>
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Songxiao Yang<sup>*</sup>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang<sup>*</sup>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yao Fu,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ye Tian,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html target="_blank">Masatoshi Okutomi</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
+      
+      In <i>Annual Conference on Neural Information Processing Systems (NeurIPS)</i> (acceptance rate: 24.9%),
+    
+    <span>December 02, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://arxiv.org/abs/2507.05193" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://huggingface.co/datasets/TokyoTechMagicYang/RAM-W600" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Dataset</button>
+        </a>
+      
+        <a href="https://github.com/YSongxiao/RAM-W600" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Benchmark</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">Layer Separation: Towards Adjustable Joint Space Width Images Synthesis
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Gen Ota,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>ACM International Conference on Multimedia (ACM MM)</i> (acceptance rate: 23.7%),
+    
+    <span>October 27, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://dl.acm.org/doi/10.1145/3746027.3755407" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2502.01972" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/pokeblow/LSN" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">GoCa: Trustworthy Multi-Modal RAG with Explicit Thinking Distillation for Reliable Decision-Making in Med-LVLMs
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yuqiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ze Jin,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 30%),
+    
+    <span>September 27, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://link.springer.com/chapter/10.1007/978-3-032-05185-1_25" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://github.com/Da1daidaidai/Goca" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">BLS-GAN: A Deep Layer Separation Framework for Eliminating Bone Overlap in Conventional Radiographs
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Gen Ota,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>Annual AAAI Conference on Artificial Intelligence (AAAI)</i> (acceptance rate: 23.4%),
+    
+    <span>February 25, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://ojs.aaai.org/index.php/AAAI/article/view/32826" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2409.07304" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/pokeblow/BLS-GAN.git" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">SaSaMIM: Synthetic Anatomical Semantics-Aware Masked Image Modeling for Colon Tumor Segmentation in Non-contrast Abdominal Computed Tomography
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yuqiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Dichao Liu,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Masahiro Hashimoto,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Masahiro Jinzaki,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Mototaka Miyake,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 31%),
+    
+    <span>October 06, 2024.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-72120-5_53" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://github.com/Da1daidaidai/SaSaMIM" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">A Sub-pixel Accurate Quantification of Joint Space Narrowing Progression in Rheumatoid Arthritis
+  
+    
+    
+    
+    <span class="award">(<a href="https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/">Featured Article, Top 7% & Cover Article of Special Issue, 1/12</a>) (<a href="https://r10.ieee.org/sapporo-yp/2023/07/31/2023-ieee-sapporo-yp-awards%e3%81%ae%e9%81%b8%e8%80%83%e7%b5%90%e6%9e%9c%e3%81%ae%e7%99%ba%e8%a1%a8/">2023 IEEE Sapporo Young Professionals Best Paper Award</a>)</span>
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou</span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ryunosuke Furuya,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Seiya Kawada,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Tianyu Zeng,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yujie An,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Kenichi Tamura,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>IEEE Journal of Biomedical and Health Informatics</i> (IF: 6.8),
+    
+    <span>October 27, 2022.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+      <a href="/2022-10-27/JBHI">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    
+    
+      
+        <a href="https://ieeexplore.ieee.org/abstract/document/9931435" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2205.09315" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+          
+            <div class="portfolio-item">
+  <h1 class="portfolio-title">Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou</span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://sites.google.com/site/shinyaty/home target="_blank">Shinya Takamaeda</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.artic.iir.titech.ac.jp/wp/en/people/ target="_blank">Masato Motomura</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://lalsie.ist.hokudai.ac.jp/~asai/en/ target="_blank">Tetsuya Asai</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>IEEE Transactions on Circuits and Systems for Video Technology</i> (IF: 11.1),
+    
+    <span>February 18, 2021.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+      <a href="/2021-02-18/TCSVT">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    
+    
+      
+        <a href="https://ieeexplore.ieee.org/abstract/document/9356757" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2003.03074" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+          
+        
+      </div>
+    </div>
+
+    <div id="portfolio-by-topic" class="portfolio-view" style="display:none;">
       
 
+      
+      
+
+      
+
+      
+        
+        
+
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="computer-aided-diagnosis">
+              <h3 class="topic-title">Computer-aided Diagnosis</h3>
+
+              <div class="portfolio topic-selected">
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">RAM-W600: A Multi-Task Wrist Dataset and Benchmark for Rheumatoid Arthritis
+  
+    
+    
+    
+    <span class="award">(NeurIPS 2025 Scholar Award)</span>
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Songxiao Yang<sup>*</sup>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang<sup>*</sup>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yao Fu,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ye Tian,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html target="_blank">Masatoshi Okutomi</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
+      
+      In <i>Annual Conference on Neural Information Processing Systems (NeurIPS)</i> (acceptance rate: 24.9%),
+    
+    <span>December 02, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://arxiv.org/abs/2507.05193" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://huggingface.co/datasets/TokyoTechMagicYang/RAM-W600" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Dataset</button>
+        </a>
+      
+        <a href="https://github.com/YSongxiao/RAM-W600" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Benchmark</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">A Sub-pixel Accurate Quantification of Joint Space Narrowing Progression in Rheumatoid Arthritis
+  
+    
+    
+    
+    <span class="award">(<a href="https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/">Featured Article, Top 7% & Cover Article of Special Issue, 1/12</a>) (<a href="https://r10.ieee.org/sapporo-yp/2023/07/31/2023-ieee-sapporo-yp-awards%e3%81%ae%e9%81%b8%e8%80%83%e7%b5%90%e6%9e%9c%e3%81%ae%e7%99%ba%e8%a1%a8/">2023 IEEE Sapporo Young Professionals Best Paper Award</a>)</span>
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou</span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ryunosuke Furuya,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Seiya Kawada,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Tianyu Zeng,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yujie An,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Kenichi Tamura,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>IEEE Journal of Biomedical and Health Informatics</i> (IF: 6.8),
+    
+    <span>October 27, 2022.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+      <a href="/2022-10-27/JBHI">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    
+    
+      
+        <a href="https://ieeexplore.ieee.org/abstract/document/9931435" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2205.09315" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+              </div>
+
+              
+                <div class="portfolio topic-more" style="display:none;">
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">AP-DPM: A Dual-Path Merging Network via Adversarial Anatomical Prior Guidance for Wrist Bone Segmentation
+  
+    
+    
+    
+    <span class="award">(BIBM2025 Student Travel Grant)</span>
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Songxiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html target="_blank">Masatoshi Okutomi</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)</i>,
+    
+    <span>December 15, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">A Deep Registration Method for Accurate Quantification of Joint Space Narrowing Progression in Rheumatoid Arthritis
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang<sup>*</sup>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>*</sup><sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Wanxuan Fang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Naoto Goto,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Gen Ota,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Taichi Okino,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Jun Fukae,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Kenneth Sutherland,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>Computerized Medical Imaging and Graphics</i> (IF: 4.9),
+    
+    <span>July 15, 2023.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+      <a href="/2023-07-15/CMIG">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    
+    
+      
+        <a href="https://www.sciencedirect.com/science/article/pii/S0895611123000915" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2304.13938" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/pokeblow/Deep-Registration-QJSN-Finger" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                </div>
+                <div class="topic-more-toggle">
+                  <span class="topic-more-link" data-topic="computer-aided-diagnosis">More</span>
+                </div>
+              
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+        
+
+        
+          
+        
+          
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="synthetic-data">
+              <h3 class="topic-title">Synthetic Data</h3>
+
+              <div class="portfolio topic-selected">
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">Layer Separation: Towards Adjustable Joint Space Width Images Synthesis
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Gen Ota,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>ACM International Conference on Multimedia (ACM MM)</i> (acceptance rate: 23.7%),
+    
+    <span>October 27, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://dl.acm.org/doi/10.1145/3746027.3755407" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2502.01972" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/pokeblow/LSN" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">BLS-GAN: A Deep Layer Separation Framework for Eliminating Bone Overlap in Conventional Radiographs
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Haolin Wang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Gen Ota,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://kamishima.hs-hokudai.jp/e_index.html target="_blank">Tamotsu Kamishima</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>Annual AAAI Conference on Artificial Intelligence (AAAI)</i> (acceptance rate: 23.4%),
+    
+    <span>February 25, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://ojs.aaai.org/index.php/AAAI/article/view/32826" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2409.07304" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/pokeblow/BLS-GAN.git" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">SaSaMIM: Synthetic Anatomical Semantics-Aware Masked Image Modeling for Colon Tumor Segmentation in Non-contrast Abdominal Computed Tomography
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yuqiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Dichao Liu,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Masahiro Hashimoto,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Masahiro Jinzaki,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Mototaka Miyake,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 31%),
+    
+    <span>October 06, 2024.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-72120-5_53" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://github.com/Da1daidaidai/SaSaMIM" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+              </div>
+
+              
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="medical-visual-question-answering">
+              <h3 class="topic-title">Medical Visual Question Answering</h3>
+
+              <div class="portfolio topic-selected">
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">GoCa: Trustworthy Multi-Modal RAG with Explicit Thinking Distillation for Reliable Decision-Making in Med-LVLMs
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Pengyu Dai,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Yuqiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Ze Jin,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://suzukilab.first.iir.titech.ac.jp/members/kenji-suzuki/ target="_blank">Kenji Suzuki</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</i> (acceptance rate: 30%),
+    
+    <span>September 27, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://link.springer.com/chapter/10.1007/978-3-032-05185-1_25" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://github.com/Da1daidaidai/Goca" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+              </div>
+
+              
+                <div class="portfolio topic-more" style="display:none;">
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">Cycle-VQA: A Cycle-Consistent Framework for Robust Medical Visual Question Answering
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Lin Fan,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://faculty.swjtu.edu.cn/gongxun target="_blank">Xun Gong<sup>#</sup></a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Cenyang Zheng,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Xuli Tan,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Jiao Li,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou</span>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>Pattern Recognition</i> (IF: 7.6),
+    
+    <span>March 13, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://www.sciencedirect.com/science/article/pii/S0031320325002699" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">Tri-VQA: Triangular Reasoning Medical Visual Question Answering for Multi-Attribute Analysis
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Lin Fan,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://faculty.swjtu.edu.cn/gongxun target="_blank">Xun Gong</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Cenyang Zheng,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)</i>,
+    
+    <span>December 03, 2024.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://ieeexplore.ieee.org/abstract/document/10822825" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2406.15050" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+        <a href="https://github.com/hahaha111111/Tri-VQA" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Code</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                </div>
+                <div class="topic-more-toggle">
+                  <span class="topic-more-link" data-topic="medical-visual-question-answering">More</span>
+                </div>
+              
+            </div>
+          
+        
+          
+        
+      
+        
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="tone-mapping">
+              <h3 class="topic-title">Tone Mapping</h3>
+
+              <div class="portfolio topic-selected">
+                
+                  <div class="portfolio-item">
+  <h1 class="portfolio-title">Real-Time Tone Mapping: A Survey and Cross-Implementation Hardware Benchmark
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou</span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchers.general.hokudai.ac.jp/profile/en.42a8ea09cd4ba903520e17560c007669.html target="_blank">Prasoon Ambalathankandy</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://sites.google.com/site/shinyaty/home target="_blank">Shinya Takamaeda</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.artic.iir.titech.ac.jp/wp/en/people/ target="_blank">Masato Motomura</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://lalsie.ist.hokudai.ac.jp/~asai/en/ target="_blank">Tetsuya Asai</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://researchmap.jp/read0116849 target="_blank">Masayuki Ikebe<sup>#</sup></a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>IEEE Transactions on Circuits and Systems for Video Technology</i> (IF: 11.1),
+    
+    <span>February 18, 2021.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+      <a href="/2021-02-18/TCSVT">
+        <button type="button" class="btn btn-outline-dark">Detail</button>
+      </a>
+    
+    
+      
+        <a href="https://ieeexplore.ieee.org/abstract/document/9356757" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+        <a href="https://arxiv.org/abs/2003.03074" target="_blank">
+          <button type="button" class="btn btn-outline-dark">arXiv</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                
+              </div>
+
+              
+            </div>
+          
+        
+      
+        
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="mri-reconstruction">
+              <h3 class="topic-title">MRI reconstruction</h3>
+
+              <div class="portfolio topic-selected">
+                
+              </div>
+
+              
+                <div class="portfolio topic-more" style="display:none;">
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">PixelINR: Scan-specific self-supervised MRI reconstruction based on implicit neural representations
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Songxiao Yang,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=http://www.ok.sc.e.titech.ac.jp/mem/mxo/okutomi.html target="_blank">Masatoshi Okutomi</a>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+      In <i>Biomedical Signal Processing and Control</i> (IF: 4.9),
+    
+    <span>October 10, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="https://www.sciencedirect.com/science/article/pii/S1746809425013497" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                </div>
+                <div class="topic-more-toggle">
+                  <span class="topic-more-link" data-topic="mri-reconstruction">More</span>
+                </div>
+              
+            </div>
+          
+        
+          
+        
+          
+        
+      
+        
+        
+
+        
+          
+        
+          
+            
+            
+            
+
+            <div class="topic-block" data-topic="domain-adaptation">
+              <h3 class="topic-title">Domain Adaptation</h3>
+
+              <div class="portfolio topic-selected">
+                
+              </div>
+
+              
+                <div class="portfolio topic-more" style="display:none;">
+                  
+                    <div class="portfolio-item">
+  <h1 class="portfolio-title">Bi-directional Mutual Supervision for Adversarial Domain Adaptation in Medical Imaging
+  
+  </h1>
+
+  <div class="portfolio-content">
+    <span>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Lin Fan,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="withlink" href=https://faculty.swjtu.edu.cn/gongxun target="_blank">Xun Gong</a>,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Xinxin Li,
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <span class='portfolio-underline'>Yafei Ou<sup>#</sup></span>.
+      
+    </span>
+    </br>
+
+    
+      <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+      
+      In <i>IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)</i> (acceptance rate: 19.6%),
+    
+    <span>December 15, 2025.</span>
+    </br>
+  </div>
+
+  <div class="portfolio-links">
+    
+    
+      
+        <a href="" target="_blank">
+          <button type="button" class="btn btn-outline-dark">Paper</button>
+        </a>
+      
+    
+  </div>
+</div>
+
+                  
+                </div>
+                <div class="topic-more-toggle">
+                  <span class="topic-more-link" data-topic="domain-adaptation">More</span>
+                </div>
+              
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     </div>
+
+
     </br>
     <div class="post-content">
       <h2 class="portfolio-section">Award</h2>
+        
+          <p class="award-text">
+            NeurIPS 2025 Scholar Award, NeurIPS, December 2025.
+          </p>
         
           <p class="award-text">
             <a href="https://r10.ieee.org/sapporo-yp/2023/07/31/2023-ieee-sapporo-yp-awards%e3%81%ae%e9%81%b8%e8%80%83%e7%b5%90%e6%9e%9c%e3%81%ae%e7%99%ba%e8%a1%a8/">2023 IEEE Sapporo Young Professionals Best Paper Award</a>, IEEE Sapporo Young Professionals, July 2023.
@@ -1034,7 +2846,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2025-12-01 17:06:11 +0900">2025</time> Yafei Ou.
+        &copy; <time datetime="2025-12-02 16:48:19 +0900">2025</time> Yafei Ou.
       </span>
     </footer>
   </body>

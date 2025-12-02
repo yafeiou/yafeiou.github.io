@@ -21,95 +21,82 @@ layout: base
     </p>
     </br>
 
-    <!--<h2 class="portfolio-section">Publications ( <span id="sel" class="on" onclick="sel('sel')">Selected</span> / <span id="unsel" class="off" onclick="sel('unsel')">All</span> )</h2>-->
-    <h2 class="portfolio-section">Featured Publications</h2>
+    <h2 class="portfolio-section">
+      Publications
+      <span class="portfolio-toggle">
+        <span class="portfolio-tab active" data-view="featured">Featured</span>
+        <span class="portfolio-tab" data-view="topic">By topic</span>
+      </span>
+    </h2>
     <p class="nomargin">( <sup>*</sup> Equal Contribution and <sup>#</sup> Corresponding Author)</p>
-    <div class="portfolio">
-      {% for post in paginator.posts %}
-      {% if post.selected %}
-        <div class="portfolio-item">
-        <h1 class="portfolio-title">{{ post.paperTitle }}
-        {% if post.awards %}
-          {% assign index = 0 %}
-          {% assign text = '' %}
-          {% for award in post.awards %}
-            {% if index > 0 %}
-              {% capture text %}{{ text }}) ({% endcapture %}
-            {% endif %}
-            {% assign index = index | plus: 1 %}
-            {% if award.link %}
-              {% capture text %}{{ text }}<a href="{{ award.link }}">{{ award.name }}</a>{% endcapture %}
-            {% else %}
-              {% capture text %}{{ text }}{{ award.name }}{% endcapture %}
+
+    <div id="portfolio-featured" class="portfolio-view">
+      <div class="portfolio">
+        {% for post in paginator.posts %}
+          {% if post.selected %}
+            {% include portfolio_item.html post=post %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="portfolio-by-topic" class="portfolio-view" style="display:none;">
+      {% assign topic_groups = paginator.posts | group_by: "topic" %}
+
+      {% assign topic_keys = "" | split: "" %}
+      {% for group in topic_groups %}
+        {% if group.name %}
+          {% assign topic_selected = group.items | where: "selected", true %}
+          {% assign latest = "00000000000000" %}
+          {% for post in topic_selected %}
+            {% assign date_str = post.date | date: "%Y%m%d%H%M%S" %}
+            {% if date_str > latest %}
+              {% assign latest = date_str %}
             {% endif %}
           {% endfor %}
-          <span class="award">({{ text }})</span>
+          {% capture pair %}{{ latest }}|{{ group.name }}{% endcapture %}
+          {% assign topic_keys = topic_keys | push: pair %}
         {% endif %}
-        </h1>
-        <div class="portfolio-content">
-          <span>
-            {% assign len = post.authors.size %}
-            {% assign index = 0 %}
-            {% for author in post.authors %}
-              {% assign index = index | plus: 1 %}
-              {% capture name %}{{ author.name }}{% endcapture %}
-              {% if author.eqCon %}
-                {% capture name %}{{ name }}<sup>*</sup>{% endcapture %}
-              {% endif %}
-              {% if author.Corr %}
-                {% capture name %}{{ name }}<sup>#</sup>{% endcapture %}
-              {% endif %}
-              {% assign key = author.name | split: " " %}
-              {% capture key %}{{ key[1] }}{% endcapture %}
-              {% if key == 'Ou' %}
-                {% capture name %}<span class='portfolio-underline'>{{ name }}</span>{% endcapture %}
-              {% endif %}
-              {% if site.link[key] %}
-                {% capture name %}<a class="withlink" href={{ site.link[key] }} target="_blank">{{ name }}</a>{% endcapture %}
-              {% endif %}
-              {% if index == len %}
-                {% capture name %}{{ name }}.{% endcapture %}
-              {% else %}
-                {% capture name %}{{ name }},{% endcapture %}
-              {% endif %}
-              {{ name }}
-            {% endfor %}
-          </span>
-          </br>
-          {% if site.journal[post.title].type == 'Journal' %}
-            <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
-            In <i>{{ site.journal[post.title].name }}</i> (IF: {{ site.journal[post.title].IF }}),
-          {% elsif site.journal[post.title].type == 'Conference' %}
-            <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
-            {% assign year = post.date | date: "%Y" %}
-            In <i>{{ site.journal[post.title].name }}</i> (acceptance rate: {{ site.journal[post.title].rate[year] }}),
-          {% elsif site.journal[post.title].type == 'Chapter' %}
-            <button type="button" class="btn btn-sm btn-success" disabled>Chapter</button>
-            In <i>{{ site.journal[post.title].name }}</i>,
-          {% elsif site.journal[post.title].type == 'Dataset' %}
-            <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
-            {% assign year = post.date | date: "%Y" %}
-            In <i>{{ site.journal[post.title].name }}</i> (acceptance rate: {{ site.journal[post.title].rate[year] }}),
-          {% endif %}
-          <span>{{ post.date | date: "%B %d, %Y" }}.</span>
-          </br>
-        </div>
-        <div class="portfolio-links">
-          {% if post.page %}
-            <a href="{{ post.url | prepend: site.baseurl }}"><button type="button" class="btn btn-outline-dark">Detail</button></a>
-          {% endif %}
-          {% if post.links %}
-            {% for link in post.links %}
-              <a href="{{ link.link }}" target="_blank"><button type="button" class="btn btn-outline-dark">{{ link.name }}</button></a>
-            {% endfor %}
-          {% endif %}
-        </div>
+      {% endfor %}
 
-        </div>
-      {% endif %}
+      {% assign topic_keys = topic_keys | sort | reverse %}
 
+      {% for pair in topic_keys %}
+        {% assign parts = pair | split: "|" %}
+        {% assign topic_name = parts[1] %}
+
+        {% for group in topic_groups %}
+          {% if group.name == topic_name %}
+            {% assign topic_posts    = group.items %}
+            {% assign topic_selected = topic_posts | where: "selected", true %}
+            {% assign topic_more     = topic_posts | where_exp: "post", "post.selected != true" %}
+
+            <div class="topic-block" data-topic="{{ topic_name | slugify }}">
+              <h3 class="topic-title">{{ topic_name }}</h3>
+
+              <div class="portfolio topic-selected">
+                {% for post in topic_selected %}
+                  {% include portfolio_item.html post=post %}
+                {% endfor %}
+              </div>
+
+              {% if topic_more.size > 0 %}
+                <div class="portfolio topic-more" style="display:none;">
+                  {% for post in topic_more %}
+                    {% include portfolio_item.html post=post %}
+                  {% endfor %}
+                </div>
+                <div class="topic-more-toggle">
+                  <span class="topic-more-link" data-topic="{{ topic_name | slugify }}">More</span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endfor %}
     </div>
+
+
     </br>
     <div class="post-content">
       <h2 class="portfolio-section">Award</h2>

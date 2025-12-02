@@ -3,8 +3,8 @@
     border-bottom: 1px solid $grey-2;
     color: $default-color;
     display: inline-block;
-    padding-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    padding-bottom: 0.75rem;
+    margin-top: 0.75rem;
 
     &:hover .portfolio-line,
     &:focus .portfolio-line {
@@ -13,7 +13,7 @@
   }
 
   &-section{
-    margin: 0 0 18px 0;
+    margin: 0;
     font-size: 1.8em;
   }
 
@@ -34,14 +34,13 @@
   }
 
   &-content {
-    margin-top: 0.5rem;
     color: $default-shade;
     font-family: $sans-serif;
     font-size: 1rem;
   }
 
   &-links {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     color: $default-shade;
     font-family: $sans-serif;
     font-size: 1rem;
@@ -80,7 +79,6 @@
 
 .nomargin{
   margin: 0;
-  margin-top: -20px;
 }
 
 .withlink{
@@ -94,3 +92,65 @@
 .important{
   color: red;
 }
+
+.portfolio-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.portfolio-toggle {
+  display: inline-flex;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.portfolio-tab {
+  padding: 0.15rem 0.7rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.portfolio-tab.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.topic-block {
+  margin: 0;
+}
+
+.topic-title {
+  margin: 0;
+  padding-bottom: 0.25rem;
+  padding-top: 1.25rem;
+  font-size: 1.4em;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.btn{
+  line-height: 1.25;
+}
+
+.btn-sm{
+  line-height: 0.75;
+}
+
+.topic-more-toggle {
+  text-align: center;
+  margin: 0;
+  height: 0;
+}
+
+.topic-more-link {
+  position: relative;
+  display: inline-block;
+  top: -1em;
+  padding: 0 0.75rem;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+

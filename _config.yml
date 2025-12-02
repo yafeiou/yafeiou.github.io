@@ -75,17 +75,24 @@ journal:
     name: Computerized Medical Imaging and Graphics
     type: Journal
     IF: 4.9
+  Bspc:
+    name: Biomedical Signal Processing and Control
+    type: Journal
+    IF: 4.9
   Miccai:
     name: International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)
     type: Conference
     rate:
       "2024": 31%
       "2025": 30%
-  Bibm:
+  Bibms:
+    name: IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)
+    type: Conference
+  Bibmr:
     name: IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM)
     type: Conference
     rate:
-      "2024": 22%
+      "2025": 19.6%
   Aaai:
     name: Annual AAAI Conference on Artificial Intelligence (AAAI)
     type: Conference
@@ -100,9 +107,12 @@ journal:
     name: Annual Conference on Neural Information Processing Systems (NeurIPS)
     type: Dataset
     rate:
-      "2025": 24.91%
+      "2025": 24.9%
 
 awards:
+  - name: NeurIPS 2025 Scholar Award
+    organizer: NeurIPS
+    time: December 2025
   - name: 2023 IEEE Sapporo Young Professionals Best Paper Award
     organizer: IEEE Sapporo Young Professionals
     time: July 2023
@@ -115,15 +125,6 @@ awards:
     organizer: IEEE Journal of Biomedical and Health Informatics
     time: January 2023
     link: https://www.embs.org/jbhi/articles/special-issue-on-large-scale-medical-image-and-video-analytics-for-clinical-decision-support/
-#  - name: Bronze Award
-#    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
-#    time: April 2020
-#  - name: Excellent Student Award
-#    organizer: 76th Annual Meeting of the Japanese Society of Radiological Technology
-#    time: April 2020
-#  - name: Meritorious Winner (No. 50124) (Top 7%)
-#    organizer: Mathematical Contest in Modeling (MCM)
-#    time: April 2016
 
 
 # Build settings
