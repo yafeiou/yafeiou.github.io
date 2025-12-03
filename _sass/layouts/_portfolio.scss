@@ -157,3 +157,17 @@
   margin: 0;
 }
 
+.award {
+  color: red;
+  a {
+    color: red;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.portfolio-title .award{
+  font-size: 0.8em;
+  font-weight: normal;
+}
