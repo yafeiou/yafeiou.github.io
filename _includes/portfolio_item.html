@@ -39,9 +39,8 @@
           {% if author.Corr %}
             {% capture name %}{{ name }}<sup>#</sup>{% endcapture %}
           {% endif %}
-          {% assign key = author.name | split: " " %}
-          {% capture key %}{{ key[1] }}{% endcapture %}
-          {% if key == 'Ou' %}
+          {% assign key = author.name | replace: ' ', '' %}
+          {% if key == 'YafeiOu' %}
             {% capture name %}<span class='portfolio-underline'>{{ name }}</span>{% endcapture %}
           {% endif %}
           {% if site.link[key] %}
