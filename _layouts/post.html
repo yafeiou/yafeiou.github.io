@@ -35,7 +35,11 @@ layout: base
     <div class="units">
       {% for unit in page.units %}
         <div>
-          {{ site.units[unit.name].name }}
+          {% if site.units[unit.name].name %}
+            {{ site.units[unit.name].name }}
+          {% else %}
+            {{ unit }}
+          {% endif %}
         </div>
       {% endfor %}
     </div>

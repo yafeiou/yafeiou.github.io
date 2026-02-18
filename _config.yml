@@ -108,6 +108,8 @@ journal:
     type: Dataset
     rate:
       "2025": 24.9%
+  Arxivdb:
+    type: Dataset
 
 awards:
   - name: NeurIPS 2025 Scholar Award

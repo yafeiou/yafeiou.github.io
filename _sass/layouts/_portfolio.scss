@@ -123,8 +123,8 @@
 
 .topic-title {
   margin: 0;
-  padding-bottom: 0.25rem;
-  padding-top: 1.25rem;
+  padding-bottom: 0.75rem;
+  padding-top: 3.5rem;
   font-size: 1.4em;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -170,4 +170,11 @@
 .portfolio-title .award{
   font-size: 0.8em;
   font-weight: normal;
+}
+
+.portfolio-item{
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  margin-left: 0;
+  margin-right: 0;
 }

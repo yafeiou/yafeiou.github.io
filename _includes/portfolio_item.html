@@ -58,18 +58,24 @@
 
       {% if site.journal[include.post.title].type == 'Journal' %}
         <button type="button" class="btn btn-sm btn-secondary" disabled>Journal</button>
+        {% if site.journal[include.post.title].name %}
         In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].IF %} (IF: {{ site.journal[include.post.title].IF }}){% endif %},
+        {% endif %}
       {% elsif site.journal[include.post.title].type == 'Conference' %}
         <button type="button" class="btn btn-sm btn-primary" disabled>Conference</button>
+        {% if site.journal[include.post.title].name %}
         {% assign year = include.post.date | date: "%Y" %}
         In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].rate[year] %} (acceptance rate: {{ site.journal[include.post.title].rate[year] }}){% endif %},
+        {% endif %}
       {% elsif site.journal[include.post.title].type == 'Chapter' %}
         <button type="button" class="btn btn-sm btn-success" disabled>Chapter</button>
         In <i>{{ site.journal[include.post.title].name }}</i>,
       {% elsif site.journal[include.post.title].type == 'Dataset' %}
         <button type="button" class="btn btn-sm btn-danger" disabled>Dataset</button>
+        {% if site.journal[include.post.title].name %}
         {% assign year = include.post.date | date: "%Y" %}
         In <i>{{ site.journal[include.post.title].name }}</i>{% if site.journal[include.post.title].rate[year] %} (acceptance rate: {{ site.journal[include.post.title].rate[year] }}){% endif %},
+        {% endif %}
       {% endif %}
       <span>{{ include.post.date | date: "%B %d, %Y" }}.</span>
       </br>
