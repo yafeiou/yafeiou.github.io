@@ -110,6 +110,10 @@ journal:
       "2025": 24.9%
   Arxivdb:
     type: Dataset
+  Eswa:
+    name: Expert Systems with Applications
+    type: Journal
+    IF: 7.5
 
 awards:
   - name: NeurIPS 2025 Scholar Award
